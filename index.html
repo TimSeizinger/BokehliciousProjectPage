@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bokehlicious: Photorealistic Bokeh Rendering with Controllable Apertures</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<div id="slots" class="display"></div>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            Bokehlicious: Photorealistic Bokeh Rendering with Controllable Apertures
+          </h1>
+          <h2 class="is-size-3 publication-venue">
+            <span class="author-block">International Conference on Computer Vision (ICCV 2025) ✨</span>
+          </h2>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">Tim Seizinger</span>,
+            <span class="author-block">Florin-Alexandru Vasluianu</span>,
+            <span class="author-block">Marcos V. Conde</span>,
+            <span class="author-block">Zongwei Wu</span>,
+            <span class="author-block">Radu Timofte</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">University of Würzburg</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary - TBU</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/TimSeizinger/Bokehlicious"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code - TBU</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/TimSeizinger/Bokehlicious"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data - TBU</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="container is-max-desktop">
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Interpolating. -->
+        <div class="column interpolation-video-column">
+          <div id="interpolation-image-wrapper">
+            Loading...
+          </div>
+          <input class="slider is-fullwidth is-large is-info"
+                 id="interpolation-slider"
+                 step="1" min="0" max="100" value="0" type="range">
+        </div>
+        <div class="content has-text-centered">
+          <p>
+            Use the slider to set the aperture!
+            We can generate Bokeh for any given aperture up to a maximum of F2.0.
+          </p>
+        </div>
+      </div>
+    </div><br/>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Bokeh rendering methods play a key role in creating the visually appealing, softly blurred backgrounds seen
+            in professional photography. While recent learning-based approaches show promising results, generating
+            realistic Bokeh remains challenging. Existing methods require additional inputs and suffer from unrealistic
+            Bokeh reproduction due to reliance on synthetic data.
+          </p>
+          <p>
+            In this work, we propose Bokehlicious, a highly efficient network that provides intuitive control over Bokeh
+            strength through an Aperture-Aware Attention mechanism, mimicking the physical lens aperture.
+            To further address the lack of high-quality real-world data, we present RealBokeh, a novel dataset featuring
+            23,000 high-resolution (24-MP) images captured by professional photographers,
+            covering diverse scenes with varied aperture and focal length settings.
+          </p>
+          <p>
+            Evaluations on both our new RealBokeh and established Bokeh rendering benchmarks show that Bokehlicious
+            consistently outperforms SOTA methods while significantly reducing computational cost and exhibiting strong
+            zero-shot generalization. Our method and dataset further extend to defocus deblurring,
+            achieving competitive results on the RealDOF benchmark.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="content has-text-centered">
+          <p>
+            Examples of Bokehlicious rendering results, swipe to see more.
+          </p>
+        </div>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-candle">
+          <video poster="" id="candle" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/candle.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair">
+          <video poster="" id="chair" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-cola">
+          <video poster="" id="cola" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/cola.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-cola_back">
+          <video poster="" id="cola_back" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/cola_back.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-collie">
+          <video poster="" id="collie" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/collie.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-dino">
+          <video poster="" id="dino" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dino.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-enterprise">
+          <video poster="" id="enterprise" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/enterprise.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-feather">
+          <video poster="" id="feather" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/feather.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-halloween">
+          <video poster="" id="halloween" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/halloween.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-halloween">
+          <video poster="" id="hedge" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/hedge.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-portrait">
+          <video poster="" id="portrait" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/portrait.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-prey">
+          <video poster="" id="prey" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/prey.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-wildemaus">
+          <video poster="" id="wildemaus" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/wildemaus.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            TODO: Add examples from the dataset and describe the capturing procedure
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            TODO: Add network architecture visualization and description.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+        <div class="content has-text-justified">
+          <p>
+            There has been interesting works on Bokeh that were done concurrently by other researchers, feel free to check them out!
+          </p>
+          <p>
+            <a href="https://ieeexplore.ieee.org/abstract/document/10756626">BokehMe++: Harmonious Fusion of Classical and Neural Rendering for Versatile Bokeh Creation</a> improves BokehMe with a better classical rendering algorithm for a more complex and natural Bokeh.
+          </p>
+          <p>
+            <a href="https://ieeexplore.ieee.org/abstract/document/10494187">Neural Bokeh: Learning Lens Blur for Computational Videography and Out-of-Focus Mixed Reality</a> applies the idea of learning a photorealistic Bokeh blur to mixed reality image composition.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2507.18060">BokehDiff: Neural Lens Blur with One-Step Diffusion</a> propose an improved diffusion-based synthetic training data generation framework and similarly employs a physics inspired attention mechanism to achieve fine-grained subject segmentation for bokeh rendering.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <p>
+            If you find our dataset or method useful, please cite us!
+          </p>
+        </div>
+      </div>
+    </div>
+    <pre><code>@article{seizinger2025bokehlicious,
+          author    = {Seizinger, Tim and Vasluianu, Florin-Alexandru and Conde, Marcos and Wu, Zongwei and Timofte, Radu},
+          title     = {Bokehlicious: Photorealistic Bokeh Rendering with Controllable Apertures},
+          journal   = {ICCV},
+          year      = {2025},
+        }
+    </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is heavily inspired by <a href="https://nerfies.github.io/">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
