@@ -41,6 +41,20 @@ $(document).ready(function() {
             pagination: false,
             navigationSwipe: true,
     }
+    
+    var doptions = {
+            initialSlide: 0,
+			slidesToScroll: 1,
+			slidesToShow: 5,
+			loop: false,
+			infinite: false,
+			autoplay: false,
+			autoplaySpeed: 8000,
+            pauseOnHover: true,
+            navigation: false,
+            pagination: false,
+            navigationSwipe: true,
+    }
 
 		// Initialize all div with carousel class
     var carousels = bulmaCarousel.attach('.carousel', options);
@@ -61,7 +75,16 @@ $(document).ready(function() {
     		console.log(state);
     	});
     }
+    
+    var dcarousels = bulmaCarousel.attach('.dcarousel', doptions);
 
+        // Loop on each carousel initialized
+    for(var i = 0; i < dcarousels.length; i++) {
+    	// Add listener to  event
+    	dcarousels[i].on('before:show', state => {
+    		console.log(state);
+    	});
+    }
     /*var player = document.getElementById('interpolation-video');
     player.addEventListener('loadedmetadata', function() {
       $('#interpolation-slider').on('input', function(event) {

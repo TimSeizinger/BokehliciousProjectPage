@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
-  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+        content="Bokehlicious creates Photorealistic Bokeh.">
+  <meta name="keywords" content="Bokehlicious, BokehRendering, Controllable">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bokehlicious: Photorealistic Bokeh Rendering with Controllable Apertures</title>
 
@@ -83,18 +83,18 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code - TBU</span>
+                  <span>Code</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
               <span class="link-block">
-                <a href="https://github.com/TimSeizinger/Bokehlicious"
+                <a href="https://huggingface.co/datasets/timseizinger/RealBokeh_3MP"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="far fa-images"></i>
                   </span>
-                  <span>Data - TBU</span>
-                  </a>
+                  <span>Data</span>
+                </a>
               </span>
             </div>
           </div>
@@ -119,10 +119,10 @@
                  step="1" min="0" max="100" value="0" type="range">
         </div>
         <div class="content has-text-centered">
-          <p>
+          <h5>
             Use the slider to set the aperture!
             We can generate Bokeh for any given aperture up to a maximum of F2.0.
-          </p>
+          </h5>
         </div>
       </div>
     </div><br/>
@@ -165,23 +165,11 @@
   <div class="hero-body">
     <div class="container">
       <div class="content has-text-centered">
-          <p>
-            Examples of Bokehlicious rendering results, swipe to see more.
-          </p>
-        </div>
+          <h4>
+            Examples of Bokehlicious rendering results, swipe to see more!
+          </h4>
+      </div>
       <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-candle">
-          <video poster="" id="candle" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/candle.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-chair">
-          <video poster="" id="chair" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/chair.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
         <div class="item item-cola">
           <video poster="" id="cola" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/cola.mp4"
@@ -194,9 +182,21 @@
                     type="video/mp4">
           </video>
         </div>
-        <div class="item item-collie">
-          <video poster="" id="collie" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/collie.mp4"
+        <div class="item item-candle">
+          <video poster="" id="candle" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/candle.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair">
+          <video poster="" id="chair" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-feather">
+          <video poster="" id="feather" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/feather.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -209,12 +209,6 @@
         <div class="item item-enterprise">
           <video poster="" id="enterprise" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/enterprise.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-feather">
-          <video poster="" id="feather" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/feather.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -254,19 +248,73 @@
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Dataset</h2>
-        <div class="content has-text-justified">
-          <p>
-            TODO: Add examples from the dataset and describe the capturing procedure
-          </p>
+    <div class="hero-body">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Dataset</h2>
+                <div class="content has-text-centered">
+                    <h5>
+                        Real Bokeh was collected in the wild with a Canon R6II camera and a Canon RF 28-70mm f/2.0 lens.
+                    </h5>
+                    <h6>
+                        To obtain good alignment between image samples, remote camera operation and an automated capturing capturing procedure was implemented.
+                    </h6>
+                </div>
+                <div id="flower-carousel" class="dcarousel dataset-carousel">
+                    <div class="item item-flower-22-0">
+                        <img src="./static/images/dataset/866_f22.jpg" alt="Dataset Example Flower at f22.0">
+                    </div>
+                    <div class="item item-flower-9-0">
+                        <img src="./static/images/dataset/866_f9.0.jpg" alt="Dataset Example Flower at f9.0">
+                    </div>
+                    <div class="item item-flower-4-0">
+                        <img src="./static/images/dataset/866_f4.0.jpg" alt="Dataset Example Flower at f4.0">
+                    </div>
+                    <div class="item item-flower-3-2">
+                        <img src="./static/images/dataset/866_f3.2.jpg" alt="Dataset Example Flower at f3.2">
+                    </div>
+                    <div class="item item-flower-2-0">
+                        <img src="./static/images/dataset/866_f2.0.jpg" alt="Dataset Example Flower at f2.0">
+                    </div>
+                </div>
+                <div id="puppet-carousel" class="dcarousel dataset-carousel">
+                    <div class="item item-puppet-22-0">
+                        <img src="./static/images/dataset/4917_f22.jpg" alt="Dataset Example puppet at f22.0">
+                    </div>
+                    <div class="item item-puppet-13-0">
+                        <img src="./static/images/dataset/4917_f13.jpg" alt="Dataset Example puppet at f13.0">
+                    </div>
+                    <div class="item item-puppet-8-0">
+                        <img src="./static/images/dataset/4917_f8.0.jpg" alt="Dataset Example puppet at f8.0">
+                    </div>
+                    <div class="item item-puppet-5-0">
+                        <img src="./static/images/dataset/4917_f5.0.jpg" alt="Dataset Example puppet at f5.0">
+                    </div>
+                    <div class="item item-puppet-2-0">
+                        <img src="./static/images/dataset/4917_f2.0.jpg" alt="Dataset Example puppet at f2.0">
+                    </div>
+                </div>
+                <div id="ship-carousel" class="dcarousel dataset-carousel">
+                    <div class="item item-ship-22-0">
+                        <img src="./static/images/dataset/4641_f22.jpg" alt="Dataset Example ship at f22.0">
+                    </div>
+                    <div class="item item-ship-14-0">
+                        <img src="./static/images/dataset/4641_f14.jpg" alt="Dataset Example ship at f14.0">
+                    </div>
+                    <div class="item item-ship-7-1">
+                        <img src="./static/images/dataset/4641_f7.1.jpg" alt="Dataset Example ship at f7.1">
+                    </div>
+                    <div class="item item-ship-2-8">
+                        <img src="./static/images/dataset/4641_f2.8.jpg" alt="Dataset Example ship at f2.8">
+                    </div>
+                    <div class="item item-ship-2-0">
+                        <img src="./static/images/dataset/4641_f2.0.jpg" alt="Dataset Example ship at f2.0">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 <section class="section">
@@ -276,9 +324,20 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Method</h2>
         <div class="content has-text-justified">
-          <p>
-            TODO: Add network architecture visualization and description.
-          </p>
+            <img src="static/images/network/NetOverview.jpg" alt="Overview of our Network Architecture">
+        </div>
+        <div class="content has-text-centered">
+          <h5>
+            To increase efficiency we embed our Transformer into a residual U-Net.
+          </h5>
+        </div>
+        <div class="content has-text-justified">
+            <img src="static/images/network/AAA_fix.jpg" alt="Overview of our Attention Mechanism">
+        </div>
+        <div class="content has-text-centered">
+          <h5>
+            Our Aperture Aware Attention dynamically adjusts to the desired output <i>f-stop</i>.
+          </h5>
         </div>
       </div>
     </div>
@@ -322,13 +381,15 @@
         </div>
       </div>
     </div>
-    <pre><code>@article{seizinger2025bokehlicious,
-          author    = {Seizinger, Tim and Vasluianu, Florin-Alexandru and Conde, Marcos and Wu, Zongwei and Timofte, Radu},
-          title     = {Bokehlicious: Photorealistic Bokeh Rendering with Controllable Apertures},
-          journal   = {ICCV},
-          year      = {2025},
-        }
-    </code></pre>
+      <pre>
+          <code>
+              @inproceedings{seizinger2025bokehlicious,
+              author    = {Seizinger, Tim and Vasluianu, Florin-Alexandru and Conde, Marcos and Wu, Zongwei and Timofte, Radu},
+              title     = {Bokehlicious: Photorealistic Bokeh Rendering with Controllable Apertures},
+              booktitle = {ICCV},
+              year      = {2025},
+          </code>
+      </pre>
   </div>
 </section>
 
