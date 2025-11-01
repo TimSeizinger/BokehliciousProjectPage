@@ -1,6 +1,6 @@
 # Bokehlicious Project Page
 
-This is the repository that contains source code for the [Bokehlicious Website](https://timseizinger.github.io/Bokehlicious).
+This is the repository that contains source code for the [Bokehlicious Website](https://timseizinger.github.io/BokehliciousProjectPage).
 
 If you find Bokehlicious useful for your work please cite:
 ```
